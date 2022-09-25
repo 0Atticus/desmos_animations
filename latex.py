@@ -24,10 +24,10 @@ def get_latex(filename):
                 x2, y2 = segment.c2.x, segment.c2.y
                 x3, y3 = segment.end_point.x, segment.end_point.y
                 latex.append('((1-t)((1-t)((1-t)%f+t%f)+t((1-t)%f+t%f))+t((1-t)((1-t)%f+t%f)+t((1-t)%f+t%f)),\
-                (1-t)((1-t)((1-t)%f+t%f)+t((1-t)%f+t%f))+t((1-t)((1-t)%f+t%f)+t((1-t)%f+t%f)))' % \
+                (1-t)((1-t)((1-t)%f+t%f)+t((1-t)%f+t%f))+t((1-t)((1-t)%f+t%f)+t((1-t)%f+t%f)))!' % \
                 (x0, x1, x1, x2, x1, x2, x2, x3, y0, y1, y1, y2, y1, y2, y2, y3))
             start = segment.end_point
     return latex
 
-print(get_latex("kirbo.pnm")[0])
+print(get_latex("kirbo.pnm")[:2])
 
