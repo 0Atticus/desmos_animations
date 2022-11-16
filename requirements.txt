@@ -1,7 +1,6 @@
-subprocess
 selenium
 webdriver-manager
-cv2
+opencv-python
 potracer
 numpy
 Pillow
