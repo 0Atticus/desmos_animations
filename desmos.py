@@ -3,8 +3,6 @@ import numpy as np
 from PIL import Image
 import potrace
 import time
-from pynput.keyboard import Key, Controller
-import pyperclip
 from flask import Flask, render_template
 from os import sys
 
