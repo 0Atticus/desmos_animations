@@ -1,8 +1,6 @@
-time
 subprocess
 selenium
 webdriver-manager
-os
 cv2
 potracer
 numpy
