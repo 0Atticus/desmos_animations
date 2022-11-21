@@ -8,7 +8,6 @@ from os import sys
 
 app = Flask(__name__)
 
-keyboard = Controller()
 
 
 def get_latex(filename):

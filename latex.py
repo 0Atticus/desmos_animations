@@ -1,6 +1,7 @@
 import potrace
 import numpy as np
 from PIL import Image
+import pyperclip
 
 def get_latex(filename):
     latex = []
@@ -29,5 +30,6 @@ def get_latex(filename):
             start = segment.end_point
     return latex
 
-print(get_latex("kirbo.pnm")[:2])
+# print(get_latex("kirbo.pnm")[:2])
+pyperclip.copy(str(get_latex("jojo.pnm")))
 

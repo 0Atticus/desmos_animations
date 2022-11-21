@@ -12,4 +12,4 @@ def get_contours(filename):
     cv2.imwrite(f"{filename.split('.')[0]}.pnm", mask)
     cv2.imwrite(f"{filename.split('.')[0]}_mask.png", mask)
 
-get_contours("kirbo.png")
+get_contours("jojo.png")
