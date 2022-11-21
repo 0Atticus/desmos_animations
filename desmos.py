@@ -79,6 +79,7 @@ def plot_image():
     shape = get_contours(filename)
     raw_latex = get_latex(filename.split(".")[0] + ".pnm")
     latex = ""
+    flip_image(filename)
     for bezier in raw_latex:
         latex += bezier
     return render_template("index.html", latex=latex, shape=shape)
