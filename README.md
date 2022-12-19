@@ -1,6 +1,6 @@
 
 #  Desmos Animations
-> A repository for converting images into curve equations and drawing them with the desmos API.
+> A repository for converting images into bezier curve equations and drawing them with the desmos API.
 
 >This project is a work in progress, it is functional but not complete.
 
