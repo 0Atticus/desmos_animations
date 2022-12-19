@@ -56,7 +56,7 @@ python3 main.py
 >Press the start key and type 'cmd' to open your command prompt.
 >Navigate to this repository with 
 ```bash
-cd desmos_animations/
+cd desmos_animations
 ```
 >Install dependancies with:
 ```bash
