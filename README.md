@@ -8,10 +8,10 @@
 
 ## Usage
 ---
-> copy this repository and cd into it
+> clone this repository and cd into it
 ```bash
 git clone https://github.com/0Atticus/desmos_animations
-cd desmo_animations
+cd desmos_animations/
 ```
 
 >install dependancies
