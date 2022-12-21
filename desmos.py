@@ -4,7 +4,7 @@ from PIL import Image
 import potrace
 import time
 from flask import Flask, render_template
-from os import sys
+from os import sys, system
 
 app = Flask(__name__)
 
@@ -37,27 +37,11 @@ def get_latex(filename):
             start = segment.end_point
     return latex
 
-def paste():
-    keyboard.press(Key.ctrl)
-    keyboard.press('v')
-    keyboard.release(Key.ctrl)
-    keyboard.release('v')
-    keyboard.press(Key.enter)
-    keyboard.release(Key.enter)
-
-
-
-def input(latex):
-    for bezier in latex:
-        pyperclip.copy("-" + bezier.replace(" ", ""))
-        paste()
-        time.sleep(0.2)
-
-        
 def get_contours(filename):
+        
     im = cv2.imread(filename)
     imgray = cv2.cvtColor(im, cv2.COLOR_BGR2GRAY)
-    ret, thresh = cv2.threshold(imgray, 90, 190, 0)
+    ret, thresh = cv2.threshold(imgray, 110, 190, 0)
     contours, hierarchy = cv2.findContours(thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
     mask = np.ones(im.shape[:2], dtype="uint8") * 255
     cv2.drawContours(mask, contours, -1, 0, -1)
