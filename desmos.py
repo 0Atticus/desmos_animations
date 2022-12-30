@@ -25,8 +25,8 @@ def get_latex(filename):
             if segment.is_corner:
                 x1, y1 = segment.c.x, segment.c.y
                 x2, y2 = segment.end_point.x, segment.end_point.y
-                latex.append('((1-t)%f+t%f,(1-t)%f+t%f)' % (x0, x1, y0, y1))
-                latex.append('((1-t)%f+t%f,(1-t)%f+t%f)' % (x1, x2, y1, y2))
+                latex.append('((1-t)%f+t%f,(1-t)%f+t%f)!' % (x0, x1, y0, y1))
+                latex.append('((1-t)%f+t%f,(1-t)%f+t%f)!' % (x1, x2, y1, y2))
             else:
                 x1, y1 = segment.c1.x, segment.c1.y
                 x2, y2 = segment.c2.x, segment.c2.y
