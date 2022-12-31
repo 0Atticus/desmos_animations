@@ -8,9 +8,13 @@
     <script src="https://www.desmos.com/api/v1.7/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
 </head>
 <body>
-    <div id="calculator" style="width: 1300px; height: 650px;"></div>
+    <div id="calculator" style="width: 2000px; height: 800px;"></div>
 
     <script type="text/javascript">
+
+        const convertColor = (r, g, b) => {
+            return (r.toString(16) + g.toString(16) + b.toString(16));
+        }
 
         var elt = document.getElementById("calculator");
         calculator = Desmos.GraphingCalculator(elt, {
@@ -27,9 +31,17 @@
         let gCount = 0;
         
         let latex = '{{ latex }}'.replace(" ", "").split("!");
+        let colors = '{{ colors }}'.split("~")
+        let points = '{{ points }}'.split("~")
 
         for (bezier of latex) {
-            calculator.setExpression({ id: gCount, latex: '-' + bezier, color: Desmos.Colors.BLUE });
+            calculator.setExpression({ id: gCount, latex: '-' + bezier, color: Desmos.Colors.BLACK });
+            gCount++;
+        }
+
+
+        for (let i = 0; i < points.length; i++) {
+            calculator.setExpression({ id: gCount, latex: points[i], color: "#" + colors[i]})
             gCount++;
         }
 
