@@ -60,9 +60,10 @@ def get_points(filename):
     img = Image.open(filename)
     for y in range(img.height):
         for x in range(img.width):
-            if (x % 10 == 0 and y % 10 == 0):
-                points += f"(-{x}, -{y})~"
-                colors.append(rgb_to_hex(img.getpixel((x, y))))
+            if (x % 10 == 0 and x > 0):
+                if (y % 10 == 0):
+                    points += f"(-{x}, -{y})~"
+                    colors.append(rgb_to_hex(img.getpixel((x, y))))
     return (points[:-1], colors)
 
 def flip_image(filename):
@@ -108,9 +109,14 @@ def seperate_colors(filename):
 @app.route("/")
 def plot_image():
 
-    seperate_colors(filename)
-    system(f"mv {filename} {filename.split('.')[0]}_color.png")
-    system(f"mv piss.png {filename}")
+    colored = filename.split(".")[0] = "_color.png"
+
+    if ("--detail" in sys.argv):
+        seperate_colors(filename)
+        system(f"mv {filename} {filename.split('.')[0]}_color.png")
+        system(f"mv piss.png {filename}")
+    else:
+        colored = filename
 
     flip_image(filename)
     shape = get_contours(filename)
@@ -118,10 +124,11 @@ def plot_image():
     latex = ""
     flip_image(filename)
 
-    colored = filename.split(".")[0] + "_color.png"
     flip_image(colored)
     points, c = get_points(colored)
     flip_image(colored)
+
+    system(f"mv {colored} {filename}")
 
     colors = ""
     for i in c:
@@ -129,8 +136,8 @@ def plot_image():
 
     for bezier in raw_latex:
         latex += bezier
-    return render_template("index.html", latex=latex, shape=shape, colors=colors, points=points)
-
+    return render_template("index.html", latex=latex, shape=shape, colors="", points="")
+    
 
 if __name__ == "__main__":
     filename = sys.argv[1]
