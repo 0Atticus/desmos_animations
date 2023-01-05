@@ -84,7 +84,7 @@ calculator.getState();
 ```javascript
 Calc.setState();
 ```
->move your cursor to between the parentheses and the object you copied with CTRL + V, then hit enter and wait for the graph to load.
+>move your cursor to between the parentheses and paste the object you copied with CTRL + V, then hit enter and wait for the graph to load.
 >After it has loaded, there will be a "save" button at the top of the screen you can use to save the graph to your account. (you will need to be logged in)
 
 
