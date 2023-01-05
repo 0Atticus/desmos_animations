@@ -1,7 +1,6 @@
-selenium
-webdriver-manager
 opencv-python
 potracer
 numpy
 Pillow
 flask
+pyautogui
