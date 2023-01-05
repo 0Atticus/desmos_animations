@@ -124,19 +124,23 @@ def plot_image():
     latex = ""
     flip_image(filename)
 
-    flip_image(colored)
-    points, c = get_points(colored)
-    flip_image(colored)
+    if ("--color" in sys.argv):
+        flip_image(colored)
+        points, c = get_points(colored)
+        flip_image(colored)
 
-    system(f"mv {colored} {filename}")
+        system(f"mv {colored} {filename}")
 
-    colors = ""
-    for i in c:
-        colors += str(i) + "~"
+        colors = ""
+        for i in c:
+            colors += str(i) + "~"
+    else:
+        colors = ""
+        points = ""
 
     for bezier in raw_latex:
         latex += bezier
-    return render_template("index.html", latex=latex, shape=shape, colors="", points="")
+    return render_template("index.html", latex=latex, shape=shape, colors=colors, points=points)
     
 
 if __name__ == "__main__":

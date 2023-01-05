@@ -25,6 +25,7 @@ python3 desmos.py [path/to/image]
 ```
 >The time to load depends on the number of lines in the image as well as the size, all images will load eventually.
 
+> Add "--color" to your arguments to render the image in color.
 <br>
 
 ## Windows 
@@ -61,7 +62,12 @@ python3 desmos.py [your_image.png]
 
 >Follow the link that pops up in the console. (it should look like this: 127.0.0.1:5000)
 
-## Saving and Loading
+>If you want to render in color, use this command:
+```bash
+python3 desmos.py [your_image.png] --color
+```
+
+## Saving your Graph
 
 > You might want to save the graph you made, to do that you need to transfer it to the actual Desmos website.
 >To do this, Desmos has a function that can get the state of the calculator, but we have to put in a little work ourselves.
@@ -82,7 +88,7 @@ Calc.setState();
 >After it has loaded, there will be a "save" button at the top of the screen you can use to save the graph to your account. (you will need to be logged in)
 
 
-## How it works (Summarized)
+## How it Works (Summarized)
 
 > First, we apply an [OpenCV](https://opencv.org/) mask to convert the image to black and white
 > 
