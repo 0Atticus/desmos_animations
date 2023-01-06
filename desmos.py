@@ -87,12 +87,12 @@ def seperate_colors(filename):
         new_color = (255, 255, 255)
         for x in range(width):
             color = base_img.getpixel((x, y))
-            r1, g1, b1 = color
+            r1, g1, b1 = color[0], color[1], color[2]
             if(x > 0):
                 prev_pix = base_img.getpixel((x-1, y))
                 
 
-                r2, g2, b2 = prev_pix
+                r2, g2, b2 = prev_pix[0], prev_pix[1], prev_pix[2]
                 d = round(math.sqrt(0.3*(r1-r2)**2 + 0.59*(g1-g2)**2 + 0.11*(b1-b2)**2))
                 
                 if d > 50:
