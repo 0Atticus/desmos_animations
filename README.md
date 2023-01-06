@@ -92,7 +92,7 @@ Calc.setState();
 
 > First, we apply an [OpenCV](https://opencv.org/) mask to convert the image to black and white
 > 
-> After applying the mask, we use [Potrace](https://potrace.sourceforge.net/), which converts the black and white image into a raster image.
+> After applying the mask, we use [Potrace](https://potrace.sourceforge.net/), which converts the black and white bitmap image to a vector image.
 > 
 > Using Potrace again, we read from the raster image and convert each line segment into a bezeir curve.
 > 
