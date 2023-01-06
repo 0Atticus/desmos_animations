@@ -20,7 +20,7 @@ for x in range(width):
 
         surrounding_pixels = [(b, i) for b in range(x - 1, x + 2) for i in range(y - 1, y + 2) if i >= 0 and b >= 0 and i < height and b < width]
 
-        new_color = (255, 255, 255)
+        new_color = (255, 0, 0)
 
         for pix in surrounding_pixels:
             comparing_color = base_img.getpixel(pix)
@@ -29,13 +29,28 @@ for x in range(width):
                 r2, g2, b2 = comparing_color
                 d = sqrt(0.3*(r1-r2)**2 + 0.59*(g1-g2)**2 + 0.11*(b1-b2)**2)
 
-                if d > 55:
+                if d > 45:
                     new_color = (0, 0, 0)
         
         init_image[y, x] = new_color
+base_img.close()
+bw = Image.fromarray(init_image)
 
-data = Image.fromarray(init_image)
-data.save("piss.png")
+current = (0, 0, 0)
+
+def fill_location(color, loc):
+    ImageDraw.floodfill(bw, loc, color)
 
 
 
+for y in range(height):
+    for x in range(width):
+        color = bw.getpixel((x, y))
+        if color == (255, 0, 0):
+            fill_location(current, (x, y))
+
+            if current == (0, 0, 0):
+                current = (255, 255, 255)
+            else:   
+                current = (0, 0, 0)
+bw.save("piss.png")

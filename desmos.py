@@ -7,6 +7,7 @@ from flask import Flask, render_template
 from os import sys, system
 import math
 
+
 app = Flask(__name__)
 
 
@@ -94,7 +95,7 @@ def seperate_colors(filename):
                 r2, g2, b2 = prev_pix
                 d = round(math.sqrt(0.3*(r1-r2)**2 + 0.59*(g1-g2)**2 + 0.11*(b1-b2)**2))
                 
-                if d > 55:
+                if d > 50:
                     if new_color == (255, 255, 255):
                         new_color = (0, 0, 0)
                     else:
@@ -109,15 +110,16 @@ def seperate_colors(filename):
 @app.route("/")
 def plot_image():
 
-    colored = filename.split(".")[0] = "_color.png"
+    filename = sys.argv[1]
+    colored = filename
+    colors = ""
+    points = ""
 
-    if ("--detail" in sys.argv):
+    if "--detail" in sys.argv:
         seperate_colors(filename)
-        system(f"mv {filename} {filename.split('.')[0]}_color.png")
-        system(f"mv piss.png {filename}")
-    else:
-        colored = filename
-
+        system(f"mv piss.png {filename.split('.')[0]}_bw.png")
+        filename = f"{filename.split('.')[0]}_bw.png"
+    
     flip_image(filename)
     shape = get_contours(filename)
     raw_latex = get_latex(filename.split(".")[0] + ".pnm")
@@ -129,20 +131,16 @@ def plot_image():
         points, c = get_points(colored)
         flip_image(colored)
 
-        system(f"mv {colored} {filename}")
-
-        colors = ""
+        
         for i in c:
             colors += str(i) + "~"
-    else:
-        colors = ""
-        points = ""
-
-    for bezier in raw_latex:
-        latex += bezier
-    return render_template("index.html", latex=latex, shape=shape, colors=colors, points=points)
     
+    latex = "".join(raw_latex)
 
+    return render_template("index.html", colors=colors, points=points, latex=latex, shape=shape)
+
+
+    
 if __name__ == "__main__":
-    filename = sys.argv[1]
     app.run()
+
