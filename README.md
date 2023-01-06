@@ -1,7 +1,7 @@
 
 # Desmos Animations
 
->A respoitory for converting images into bezier curve lattices for the Desmos graphing calculator
+>A repository for converting images into bezier curve lattices for the Desmos graphing calculator
 
 >This project is a work in progress, I am working on animated graphs as well as a better image mask.
 
@@ -14,7 +14,7 @@ git clone https://github.com/0Atticus/desmos_animations
 cd desmos_animations/
 ```
 
->Install dependancies.
+>Install dependencies.
 ```bash
 pip install -r requirements.txt
 ```
@@ -29,7 +29,7 @@ python3 desmos.py [path/to/image]
 <br>
 
 ## Windows 
->I built and tested this on linux, but it should work for windows.
+>I built and tested this on Linux, but it should work for windows.
 
 <br>
 
@@ -72,7 +72,7 @@ python3 desmos.py [your_image.png] --color
 > You might want to save the graph you made, to do that you need to transfer it to the actual Desmos website.
 >To do this, Desmos has a function that can get the state of the calculator, but we have to put in a little work ourselves.
 
->First, open the graph you generated with this program and open the console (CTRL + SHIFT + J or right click > inspect > console) and type this command in and hit enter.
+>First, open the graph you generated with this program and open the console (CTRL + SHIFT + J or right click > inspect > console) and type this command in, and hit enter.
 ```javascript
 calculator.getState();
 ```
@@ -80,11 +80,11 @@ calculator.getState();
 <img src="https://i.ibb.co/vQ5M5MK/Screenshot-2023-01-04-1-54-12-PM.png" alt="Screenshot-2023-01-04-1-54-12-PM" border="0">
 
 >Now, open [Desmos](https://www.desmos.com/calculator) and open the console again.
->This time, type this command, but don't press enter yet.
+>This time, type this command but don't press enter yet.
 ```javascript
 Calc.setState();
 ```
->move your cursor to between the parentheses and paste the object you copied with CTRL + V, then hit enter and wait for the graph to load.
+>move your cursor between the parentheses and paste the object you copied with CTRL + V, then hit enter and wait for the graph to load.
 >After it has loaded, there will be a "save" button at the top of the screen you can use to save the graph to your account. (you will need to be logged in)
 
 
@@ -94,7 +94,7 @@ Calc.setState();
 > 
 > After applying the mask, we use [Potrace](https://potrace.sourceforge.net/), which converts the black and white bitmap image to a vector image.
 > 
-> Using Potrace again, we read from the raster image and convert each line segment into a bezeir curve.
+> Using Potrace again, we read from the raster image and convert each line segment into a bezier curve.
 > 
 > If we are rendering with color, we create a point on the graph for every 100th pixel in the image. The point will be the same color as that pixel.
 > 
