@@ -1,7 +1,7 @@
 
 # Desmos Animations
 
->A repository for converting images into bezier curve lattices for the Desmos graphing calculator
+>A repository for converting images into bezier curve latices for the Desmos graphing calculator
 
 >This project is a work in progress, I am working on animated graphs as well as a better image mask.
 
