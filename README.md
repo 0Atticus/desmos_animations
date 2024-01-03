@@ -87,15 +87,3 @@ Calc.setState();
 >move your cursor between the parentheses and paste the object you copied with CTRL + V, then hit enter and wait for the graph to load.
 >After it has loaded, there will be a "save" button at the top of the screen you can use to save the graph to your account. (you will need to be logged in)
 
-
-## How it Works (Summarized)
-
-> First, we apply an [OpenCV](https://opencv.org/) mask to convert the image to black and white
-> 
-> After applying the mask, we use [Potrace](https://potrace.sourceforge.net/), which converts the black and white bitmap image to a vector image.
-> 
-> Using Potrace again, we read from the raster image and convert each line segment into a bezier curve.
-> 
-> If we are rendering with color, we create a point on the graph for every 100th pixel in the image. The point will be the same color as that pixel.
-> 
-> Using [Flask](https://flask.palletsprojects.com/) and the [Desmos API](https://www.desmos.com/api/v1.7/docs/index.html), we load all of our equations into a graph that is displayed for the user.
